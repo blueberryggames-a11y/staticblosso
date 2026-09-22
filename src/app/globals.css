@@ -1,0 +1,303 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:wght@700;900&display=swap');
+
+@layer base {
+  :root {
+    /* AniBlossom Blossom Theme - Light Mode (unused, dark only) */
+    --background: 240 15% 6%;
+    --foreground: 300 20% 96%;
+    --card: 240 12% 10%;
+    --card-foreground: 300 20% 96%;
+    --popover: 240 14% 8%;
+    --popover-foreground: 300 20% 96%;
+    --primary: 330 70% 62%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 10% 14%;
+    --secondary-foreground: 300 20% 90%;
+    --muted: 240 10% 16%;
+    --muted-foreground: 270 8% 55%;
+    --accent: 330 70% 62%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 56%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 8% 18%;
+    --input: 240 8% 18%;
+    --ring: 330 70% 62%;
+    --radius: 0.75rem;
+
+    /* AniBlossom custom tokens */
+    --blossom: #ffb7d5;
+    --blossom2: #ff8cc8;
+    --blossom-pink: #e86db0;
+    --blossom-deep: #c94d94;
+    --gold: #f5c842;
+    --bg-raw: #0d0d12;
+    --surface-raw: #141418;
+    --card-raw: #18181f;
+    --border-raw: #242430;
+  }
+
+  .dark {
+    --background: 240 15% 6%;
+    --foreground: 300 20% 96%;
+    --card: 240 12% 10%;
+    --card-foreground: 300 20% 96%;
+    --popover: 240 14% 8%;
+    --popover-foreground: 300 20% 96%;
+    --primary: 330 70% 62%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 10% 14%;
+    --secondary-foreground: 300 20% 90%;
+    --muted: 240 10% 16%;
+    --muted-foreground: 270 8% 55%;
+    --accent: 330 70% 62%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 8% 18%;
+    --input: 240 8% 18%;
+    --ring: 330 70% 62%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+}
+
+/* ── BLOSSOM AMBIENT BACKGROUND ─────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 700px 500px at 80% 5%, rgba(232,109,176,0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 500px 350px at 10% 85%, rgba(232,109,176,0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── SCROLLBAR ──────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #0d0d12;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(232, 109, 176, 0.35);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(232, 109, 176, 0.6);
+}
+
+/* ── BLOSSOM ACCENT UTILITIES ───────────────────────────────────── */
+.blossom-gradient {
+  background: linear-gradient(135deg, #ffb7d5 0%, #e86db0 60%, #f4a6cc 100%);
+}
+.blossom-text {
+  background: linear-gradient(135deg, #ffb7d5 0%, #e86db0 60%, #f4a6cc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.blossom-border {
+  border-color: rgba(232, 109, 176, 0.35);
+}
+.blossom-glow {
+  box-shadow: 0 0 20px rgba(232, 109, 176, 0.3);
+}
+
+/* ── BLOSSOM BUTTON ─────────────────────────────────────────────── */
+.btn-blossom {
+  background: linear-gradient(135deg, #c94d94 0%, #e86db0 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+.btn-blossom:hover {
+  background: linear-gradient(135deg, #e86db0 0%, #ffb7d5 100%);
+  box-shadow: 0 4px 20px rgba(232, 109, 176, 0.5);
+  transform: translateY(-1px);
+}
+
+/* ── CARD HOVER ─────────────────────────────────────────────────── */
+.card-blossom {
+  background: #18181f;
+  border: 1px solid #242430;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.card-blossom:hover {
+  border-color: rgba(232, 109, 176, 0.4);
+  box-shadow: 0 4px 24px rgba(232, 109, 176, 0.12);
+}
+
+/* ── SECTION TITLE ──────────────────────────────────────────────── */
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #f0eef5 0%, #e86db0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── BADGE BLOSSOM ──────────────────────────────────────────────── */
+.badge-blossom {
+  background: rgba(232, 109, 176, 0.15);
+  color: #ffb7d5;
+  border: 1px solid rgba(232, 109, 176, 0.3);
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.18rem 0.6rem;
+}
+
+/* ── LIVE PULSE ─────────────────────────────────────────────────── */
+@keyframes livePulse {
+  0%   { box-shadow: 0 0 0 0 rgba(232, 109, 176, 0.6); }
+  50%  { box-shadow: 0 0 0 4px rgba(232, 109, 176, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(232, 109, 176, 0); }
+}
+
+/* ── LEARN MORE BUTTON (glow removed; pulses at rest, shines on hover) ── */
+@keyframes learnMorePulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.045); }
+}
+@keyframes learnMoreShine {
+  0%   { transform: translateX(-120%) skewX(-20deg); }
+  100% { transform: translateX(220%) skewX(-20deg); }
+}
+.animate-learn-more-pulse {
+  position: relative;
+  overflow: hidden;
+  animation: learnMorePulse 2.2s ease-in-out infinite;
+  transition: transform 0.25s ease;
+}
+.animate-learn-more-pulse::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  pointer-events: none;
+}
+.animate-learn-more-pulse:hover {
+  animation: none;
+  transform: scale(1.06);
+}
+.animate-learn-more-pulse:hover::after {
+  opacity: 1;
+  animation: learnMoreShine 0.9s ease-out;
+}
+
+/* ── BLOSSOM PETAL ANIMATION ────────────────────────────────────── */
+@keyframes petalFall {
+  0%   { transform: translateY(-20px) rotate(0deg) scale(0.8); opacity: 0; }
+  10%  { opacity: 0.7; }
+  90%  { opacity: 0.4; }
+  100% { transform: translateY(110vh) rotate(720deg) scale(1.1); opacity: 0; }
+}
+
+/* Gentle floating drift used by decorative petal divs (e.g. hero section) */
+@keyframes petalFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-14px) rotate(12deg); }
+}
+.animate-petal-float {
+  animation: petalFloat 3s ease-in-out infinite;
+}
+
+/* Falling petals inside the maintenance-page SVG — uses the SVG's own
+   400x340 user-space units rather than viewport units */
+@keyframes maintenancePetalFall {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10%  { opacity: 0.8; }
+  85%  { opacity: 0.3; }
+  100% { transform: translateY(360px) rotate(340deg); opacity: 0; }
+}
+.maintenance-petal {
+  animation-name: maintenancePetalFall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* ── CALENDAR HEATMAP ───────────────────────────────────────────── */
+.react-calendar-heatmap text {
+  font-size: 10px;
+  fill: rgba(240, 238, 245, 0.4);
+}
+.react-calendar-heatmap .react-calendar-heatmap-small-text {
+  font-size: 5px;
+}
+.react-calendar-heatmap rect:hover {
+  stroke: rgba(232, 109, 176, 0.6);
+  stroke-width: 1px;
+}
+
+/* ── INPUT FOCUS BLOSSOM ────────────────────────────────────────── */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: rgba(232, 109, 176, 0.5) !important;
+  box-shadow: 0 0 0 2px rgba(232, 109, 176, 0.15);
+}
+
+/* ── LOADER ANIMATION ───────────────────────────────────────────── */
+@keyframes blossomSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.blossom-spinner {
+  border: 3px solid rgba(232, 109, 176, 0.2);
+  border-top-color: #e86db0;
+  border-radius: 50%;
+  animation: blossomSpin 0.8s linear infinite;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* ── GLOBAL ROUNDED CORNERS POLISH ──────────────────────────────── */
+/* Ensure inputs, selects, and textareas all have rounded corners */
+input, textarea, select {
+  border-radius: 0.75rem;
+}
+
+/* Make all shadcn-ui inputs consistent */
+.rounded-md {
+  border-radius: 0.75rem !important;
+}
+
+/* ── SCROLLBAR STYLING ───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(232,109,176,0.3); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(232,109,176,0.55); }
